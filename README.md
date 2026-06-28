@@ -4,3 +4,16 @@ I want to design a software have the following function:
 1. it required me to hand on a attention note
 2. it required me to hand on a release plan with the release every step start time
 3. based on the release plan and and the attention, if there is any attention words are matched in the release plan on the release date  every step start time it will speak the things I should pay attention to to avoid I doing any silly things to damage the release.
+
+release_guardian/
+├── main.py                  ← entry point, run this
+├── data/
+│   ├── models.py            ← AttentionNote, ReleaseStep, ReleasePlan, MatchedWarning
+│   └── storage.py           ← JSON persistence (auto-saves to saved/)
+├── core/
+│   ├── matcher.py           ← keyword matching engine (notes ↔ steps)
+│   └── scheduler.py         ← background thread; fires at each step's exact time
+├── notifications/
+│   └── speaker.py           ← cross-platform TTS (macOS/Linux/Windows)
+└── ui/
+    └── cli.py               ← interactive menu CLI
